@@ -1,0 +1,32 @@
+name: Build DVB-Apps
+
+on:
+  push:
+    branches:
+      - main  # ajusta esto según el nombre de tu rama principal
+  pull_request:
+    branches:
+      - main  # ajusta esto según el nombre de tu rama principal
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Install Mercurial
+      run: sudo apt-get update && sudo apt-get install -y mercurial
+
+    - name: Clone dvb-apps repository
+      run: hg clone http://linuxtv.org/hg/dvb-apps
+
+    - name: Navigate to dvb-apps directory
+      run: cd dvb-apps
+
+    - name: Build dvb-apps
+      run: make
+
+    - name: Compress files
+      run: tar -cjf dvb-apps.tar.bz2 dvb-apps
