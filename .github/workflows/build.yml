@@ -1,4 +1,4 @@
-name: Build DVB-Apps
+name: Clone and compress DVB-Apps
 
 on:
   push:
@@ -22,11 +22,6 @@ jobs:
     - name: Clone dvb-apps repository
       run: hg clone http://linuxtv.org/hg/dvb-apps
 
-    - name: Navigate to dvb-apps directory
-      run: cd dvb-apps
-
-    - name: Build dvb-apps
-      run: make
-
     - name: Compress files
       run: tar -cjf dvb-apps.tar.bz2 dvb-apps
+
