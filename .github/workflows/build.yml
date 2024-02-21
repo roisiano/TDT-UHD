@@ -23,11 +23,10 @@ jobs:
       run: hg clone http://linuxtv.org/hg/dvb-apps
 
     - name: Compress files
-      run: tar -cjf dvb-apps.tar.bz2 dvb-apps
+      run: tar --exclude=".hg" -cjf dvb-apps.tar.bz2 dvb-apps
 
     - name: Upload artifact
       uses: actions/upload-artifact@v2
       with:
-        name: dvb-apps
-        path: dvb-apps.tar.bz2
-
+        name: dvb-apps.tar.bz2  # Nombre del archivo de artefacto
+        path: dvb-apps.tar.bz2  # Ruta del archivo comprimido
