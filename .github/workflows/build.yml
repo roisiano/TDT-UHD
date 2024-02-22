@@ -14,7 +14,7 @@ jobs:
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
 
     - name: Install Mercurial
       run: sudo apt-get update && sudo apt-get install -y mercurial
@@ -26,7 +26,7 @@ jobs:
       run: tar --exclude=".hg" -cjf dvb-apps.tar.bz2 dvb-apps
 
     - name: Upload artifact
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v4
       with:
         name: dvb-apps.tar.bz2  # Nombre del archivo de artefacto
         path: dvb-apps.tar.bz2  # Ruta del archivo comprimido
